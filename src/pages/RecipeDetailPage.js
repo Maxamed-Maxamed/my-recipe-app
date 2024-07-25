@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Container, Typography, Button, List, ListItem } from '@mui/material';
 import CommentSection from '../components/CommentSection';
 import { fetchRecipeDetails } from '../SpoonacularAPI';
+import '../styles/App.css'; // Ensure the styles are imported
 
 function RecipeDetailPage() {
   const { id } = useParams();
@@ -26,7 +27,7 @@ function RecipeDetailPage() {
   return (
     <Container>
       <Typography variant="h4">{recipe.title}</Typography>
-      <img src={recipe.image} alt={recipe.title} style={{ width: '100%' }} />
+      <img src={recipe.image} alt={recipe.title} className="recipe-image" />
       <Typography variant="h6">Ingredients</Typography>
       <List>
         {recipe.extendedIngredients.map((ingredient) => (
