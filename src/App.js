@@ -5,7 +5,6 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import SearchPage from './pages/SearchPage';
 import RecipeDetailPage from './pages/RecipeDetailPage';
-import UserAccountPage from './pages/UserAccountPage';
 import './styles/App.css';
 
 function App() {
@@ -17,7 +16,6 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/recipe/:id" element={<RecipeDetailPage />} />
-        <Route path="/user" element={<UserAccountPage />} />
       </Routes>
     </Router>
   );

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Container, Typography, List, ListItem, Paper } from '@mui/material';
 import { fetchRecipeDetails } from '../SpoonacularAPI';
 import '../styles/App.css'; // Ensure the styles are imported
+
 function RecipeDetailPage() {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
@@ -22,23 +23,13 @@ function RecipeDetailPage() {
 
   if (!recipe) return <p>Loading...</p>;
 
-  const renderInstructions = (instructions) => {
-    return instructions.split('\n').map((instruction, index) => (
-      <Typography variant="body1" paragraph key={index}>
-        {instruction}
-      </Typography>
-    ));
-  };
-
   return (
     <Container>
-      <Typography variant="h4" gutterBottom>
-        
+      <Typography variant="h4" gutterBottom align="center">
         {recipe.title}
-        
       </Typography>
       <img src={recipe.image} alt={recipe.title} className="recipe-image" />
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6" gutterBottom align="center">
         Ingredients
       </Typography>
       <Paper elevation={3} style={{ padding: '16px', marginBottom: '16px' }}>
@@ -50,11 +41,17 @@ function RecipeDetailPage() {
           ))}
         </List>
       </Paper>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6" gutterBottom align="center">
         Instructions
       </Typography>
       <Paper elevation={3} style={{ padding: '16px', marginBottom: '16px' }}>
-        {renderInstructions(recipe.instructions)}
+        <List>
+          {recipe.instructions.split('\n').map((instruction, index) => (
+            <ListItem key={index}>
+              <Typography variant="body1">{instruction}</Typography>
+            </ListItem>
+          ))}
+        </List>
       </Paper>
     </Container>
   );
