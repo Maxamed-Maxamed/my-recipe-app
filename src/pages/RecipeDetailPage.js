@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Typography, Button, List, ListItem } from '@mui/material';
+import { Container, Typography, Button, List, ListItem, Paper } from '@mui/material';
 import CommentSection from '../components/CommentSection';
 import { fetchRecipeDetails } from '../SpoonacularAPI';
 import '../styles/App.css'; // Ensure the styles are imported
@@ -26,18 +26,33 @@ function RecipeDetailPage() {
 
   return (
     <Container>
-      <Typography variant="h4">{recipe.title}</Typography>
+      <Typography variant="h4" gutterBottom>
+        {recipe.title}
+      </Typography>
       <img src={recipe.image} alt={recipe.title} className="recipe-image" />
-      <Typography variant="h6">Ingredients</Typography>
-      <List>
-        {recipe.extendedIngredients.map((ingredient) => (
-          <ListItem key={ingredient.id}>
-            <Typography variant="body1">{ingredient.original}</Typography>
-          </ListItem>
+      <Typography variant="h6" gutterBottom>
+        Ingredients
+      </Typography>
+      <Paper elevation={3} style={{ padding: '16px', marginBottom: '16px' }}>
+        <List>
+          {recipe.extendedIngredients.map((ingredient) => (
+            <ListItem key={ingredient.id}>
+              <Typography variant="body1">{ingredient.original}</Typography>
+            </ListItem>
+          ))}
+        </List>
+      </Paper>
+      <Typography variant="h6" gutterBottom>
+        Instructions
+      </Typography>
+      <Paper elevation={3} style={{ padding: '16px', marginBottom: '16px' }}>
+        {recipe.instructions.split('\n').map((instruction, index) => (
+          <Typography variant="body1" paragraph key={index}>
+            {instruction}
+          </Typography>
         ))}
-      </List>
-      <Typography variant="body1">{recipe.instructions}</Typography>
-      <Button variant="contained" color="primary">
+      </Paper>
+      <Button variant="contained" color="primary" style={{ marginBottom: '16px' }}>
         Add to Favorites
       </Button>
       <CommentSection recipeId={id} />
