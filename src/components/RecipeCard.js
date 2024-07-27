@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Card, CardContent, Typography, CardMedia, Button } from '@mui/material';
+import { Card, CardContent, Typography, CardMedia, Button, IconButton } from '@mui/material';
+import { Favorite, FavoriteBorder } from '@mui/icons-material';
+
 
 function RecipeCard({ recipe }) {
   const navigate = useNavigate();
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const handleViewRecipeClick = () => {
     navigate(`/recipe/${recipe.id}`);
+  };
+
+  const handleFavoriteClick = () => {
+    setIsFavorite(!isFavorite);
   };
 
   return (
@@ -24,9 +31,14 @@ function RecipeCard({ recipe }) {
         <Typography variant="body2" color="text.secondary" style={{ margin: '10px 0' }}>
           {recipe.description}
         </Typography>
-        <Button variant="contained" color="primary" onClick={handleViewRecipeClick}>
-          View Recipe
-        </Button>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Button variant="contained" color="primary" onClick={handleViewRecipeClick}>
+            View Recipe
+          </Button>
+          <IconButton onClick={handleFavoriteClick} color="secondary">
+            {isFavorite ? <Favorite style={{ color: 'red' }} /> : <FavoriteBorder style={{ color: 'red' }} />}
+          </IconButton>
+        </div>
       </CardContent>
     </Card>
   );
