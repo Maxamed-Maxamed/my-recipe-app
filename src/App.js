@@ -4,6 +4,7 @@ import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import RecipeDetailPage from './pages/RecipeDetailPage';
+import Footer from './components/Footer';
 import './styles/App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/recipe/:id" element={<RecipeDetailPage />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
