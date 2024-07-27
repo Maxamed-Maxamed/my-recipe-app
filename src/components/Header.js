@@ -13,8 +13,6 @@ function Header() {
         <div>
           <Button color="inherit" component={Link} to="/" style={{ color: '#fff' }}>Home</Button>
           <Button color="inherit" component={Link} to="/about" style={{ color: '#fff' }}>About</Button>
-          <Button color="inherit" component={Link} to="/search" style={{ color: '#fff' }}>Search</Button>
-          <Button color="inherit" component={Link} to="/user" style={{ color: '#fff' }}>Profile</Button>
         </div>
       </Toolbar>
     </AppBar>
