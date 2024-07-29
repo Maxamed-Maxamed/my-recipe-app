@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Typography, List, ListItem, Paper } from '@mui/material';
 import { fetchRecipeDetails } from '../SpoonacularAPI';
-import '../styles/App.css'; // Ensure the styles are imported
+import { Container, Typography, Paper, List, ListItem } from '@mui/material';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../firebaseConfig';
+import Review from '../components/Review';
 
 function RecipeDetailPage() {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
+  const [user] = useAuthState(auth);
 
   useEffect(() => {
     const getRecipeDetails = async () => {
@@ -49,6 +52,21 @@ function RecipeDetailPage() {
           {recipe.instructions.split('\n').map((instruction, index) => (
             <ListItem key={index}>
               <Typography variant="body1">{instruction}</Typography>
+            </ListItem>
+          ))}
+        </List>
+      </Paper>
+      <Review recipeId={id} />
+      <Typography variant="h6" gutterBottom align="center">
+        Reviews
+      </Typography>
+      <Paper elevation={3} style={{ padding: '16px', marginBottom: '16px' }}>
+        <List>
+          {recipe.reviews && recipe.reviews.map((review, index) => (
+            <ListItem key={index}>
+              <Typography variant="body1">
+                {review.rating} stars - {review.comment}
+              </Typography>
             </ListItem>
           ))}
         </List>
