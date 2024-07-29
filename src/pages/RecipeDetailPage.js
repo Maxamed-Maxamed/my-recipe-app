@@ -4,18 +4,29 @@ import { fetchRecipeDetails } from '../SpoonacularAPI';
 import { Container, Typography, Paper, List, ListItem } from '@mui/material';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebaseConfig';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import Review from '../components/Review';
+
+const db = getFirestore();
 
 function RecipeDetailPage() {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
   const [user] = useAuthState(auth);
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     const getRecipeDetails = async () => {
       try {
         const data = await fetchRecipeDetails(id);
         setRecipe(data);
+
+        const recipeRef = doc(db, 'recipes', id);
+        const recipeDoc = await getDoc(recipeRef);
+        if (recipeDoc.exists()) {
+          const recipeData = recipeDoc.data();
+          setReviews(recipeData.reviews || []);
+        }
       } catch (error) {
         console.error('Error fetching recipe details:', error);
       }
@@ -23,6 +34,10 @@ function RecipeDetailPage() {
 
     getRecipeDetails();
   }, [id]);
+
+  const handleReviewSubmit = (newReview) => {
+    setReviews((prevReviews) => [...prevReviews, newReview]);
+  };
 
   if (!recipe) return <p>Loading...</p>;
 
@@ -70,13 +85,13 @@ function RecipeDetailPage() {
           ))}
         </List>
       </Paper>
-      <Review recipeId={id} />
+      <Review recipeId={id} onReviewSubmit={handleReviewSubmit} />
       <Typography variant="h6" gutterBottom align="center">
         Reviews
       </Typography>
       <Paper elevation={3} style={{ padding: '16px', marginBottom: '16px' }}>
         <List>
-          {recipe.reviews && recipe.reviews.map((review, index) => (
+          {reviews.map((review, index) => (
             <ListItem key={index}>
               <Typography variant="body1">
                 {review.rating} stars - {review.comment}

@@ -6,7 +6,7 @@ import { TextField, Button, Typography, Container } from '@mui/material';
 
 const db = getFirestore();
 
-const Review = ({ recipeId }) => {
+const Review = ({ recipeId, onReviewSubmit }) => {
   const [user] = useAuthState(auth);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState('');
@@ -25,6 +25,9 @@ const Review = ({ recipeId }) => {
       }, { merge: true });
       setRating(0);
       setComment('');
+      if (onReviewSubmit) {
+        onReviewSubmit(review);
+      }
     }
   };
 

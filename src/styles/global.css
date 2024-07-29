@@ -42,7 +42,7 @@ button:hover {
   text-align: center;
 }
 
-/* Footer styles */
+/* Footer styles
 .footer {
   background-color: #333;
   color: #fff;
@@ -70,6 +70,38 @@ button:hover {
 .social-icons {
   display: flex;
   gap: 10px;
+} */
+
+.footer {
+  background-color: #f8f9fa;
+  padding: 20px 0;
+  margin-top: 20px;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.content {
+  flex: 1;
 }
 
 
