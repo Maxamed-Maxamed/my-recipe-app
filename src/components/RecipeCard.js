@@ -4,7 +4,7 @@ import { Card, CardContent, Typography, CardMedia, Button, IconButton } from '@m
 import { Favorite, FavoriteBorder } from '@mui/icons-material';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebaseConfig';
-import { doc, setDoc, getDoc, getFirestore, arrayRemove, arrayUnion } from 'firebase/firestore';
+import { doc, setDoc, getFirestore, arrayRemove, arrayUnion } from 'firebase/firestore';
 import { fetchRecipeDetails } from '../SpoonacularAPI';
 
 const db = getFirestore();

@@ -19,6 +19,7 @@ function Header() {
           <Button color="inherit" component={Link} to="/about" style={{ color: '#fff' }}>About</Button>
           {user ? (
             <>
+              <Button color="inherit" component={Link} to="/manage-recipes" style={{ color: '#fff' }}>Manage Recipes</Button>
               <Button color="inherit" onClick={() => auth.signOut()} style={{ color: '#fff' }}>Logout</Button>
             </>
           ) : (

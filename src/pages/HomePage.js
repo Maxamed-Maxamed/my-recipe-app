@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { fetchPopularRecipes } from '../SpoonacularAPI';
+import { fetchPopularRecipes, searchRecipes } from '../SpoonacularAPI';
 import RecipeCard from '../components/RecipeCard';
 import HeroSection from '../components/HeroSection';
+import SearchBar from '../components/SearchBar';
 import { Grid, Container, Typography, CircularProgress } from '@mui/material';
 
 function HomePage() {
@@ -23,12 +24,25 @@ function HomePage() {
     getPopularRecipes();
   }, []);
 
+  const handleSearch = async (query) => {
+    setLoading(true);
+    try {
+      const data = await searchRecipes(query);
+      setRecipes(data.results); // Assuming the API returns a `results` array
+    } catch (error) {
+      console.error('Error searching recipes:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <HeroSection />
+      <SearchBar onSearch={handleSearch} />
       <Container>
         <Typography variant="h3" gutterBottom align="center">
-          Popular Recipes
+          {loading ? 'Loading...' : 'Popular Recipes'}
         </Typography>
         {loading ? (
           <Grid container justifyContent="center">

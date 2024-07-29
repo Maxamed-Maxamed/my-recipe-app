@@ -7,6 +7,9 @@ import RecipeDetailPage from './pages/RecipeDetailPage';
 import Footer from './components/Footer';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import ManageRecipesPage from './pages/ManageRecipesPage';
+import FavoritesPage from './pages/FavoritesPage';
+import PrivateRoute from './components/PrivateRoute';
 import './styles/App.css';
 
 function App() {
@@ -19,6 +22,8 @@ function App() {
         <Route path="/recipe/:id" element={<RecipeDetailPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/manage-recipes" element={<PrivateRoute><ManageRecipesPage /></PrivateRoute>} />
+        <Route path="/favorites" element={<PrivateRoute><FavoritesPage /></PrivateRoute>} />
       </Routes>
       <Footer />
     </Router>
