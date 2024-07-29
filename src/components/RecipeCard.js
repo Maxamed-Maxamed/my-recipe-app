@@ -2,18 +2,29 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, Typography, CardMedia, Button, IconButton } from '@mui/material';
 import { Favorite, FavoriteBorder } from '@mui/icons-material';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../firebaseConfig';
+import { doc, setDoc, getFirestore, arrayRemove, arrayUnion } from 'firebase/firestore';
 
+const db = getFirestore();
 
 function RecipeCard({ recipe }) {
   const navigate = useNavigate();
   const [isFavorite, setIsFavorite] = useState(false);
+  const [user] = useAuthState(auth);
 
   const handleViewRecipeClick = () => {
     navigate(`/recipe/${recipe.id}`);
   };
 
-  const handleFavoriteClick = () => {
+  const handleFavoriteClick = async () => {
     setIsFavorite(!isFavorite);
+    if (user) {
+      const userRef = doc(db, 'users', user.uid);
+      await setDoc(userRef, {
+        favorites: isFavorite ? arrayRemove(recipe.id) : arrayUnion(recipe.id)
+      }, { merge: true });
+    }
   };
 
   return (
