@@ -18,7 +18,7 @@ export const searchRecipes = async (query) => {
 };
 
 export const fetchRecipeDetails = async (id) => {
-  return fetchFromAPI(`/recipes/${id}/information?includeNutrition=false`);
+  return fetchFromAPI(`/recipes/${id}/information?includeNutrition=true`);
 };
 
 export const searchRecipesByIngredients = async (ingredients) => {

@@ -56,6 +56,20 @@ function RecipeDetailPage() {
           ))}
         </List>
       </Paper>
+      <Typography variant="h6" gutterBottom align="center">
+        Nutritional Information
+      </Typography>
+      <Paper elevation={3} style={{ padding: '16px', marginBottom: '16px' }}>
+        <List>
+          {recipe.nutrition.nutrients.map((nutrient) => (
+            <ListItem key={nutrient.name}>
+              <Typography variant="body1">
+                {nutrient.name}: {nutrient.amount} {nutrient.unit}
+              </Typography>
+            </ListItem>
+          ))}
+        </List>
+      </Paper>
       <Review recipeId={id} />
       <Typography variant="h6" gutterBottom align="center">
         Reviews
