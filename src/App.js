@@ -9,6 +9,8 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import ManageRecipesPage from './pages/ManageRecipesPage';
 import FavoritesPage from './pages/FavoritesPage';
+import CategoriesPage from './pages/CategoriesPage';
+import CategoryRecipesPage from './pages/CategoryRecipesPage';
 import PrivateRoute from './components/PrivateRoute';
 import './styles/App.css';
 
@@ -24,6 +26,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/manage-recipes" element={<PrivateRoute><ManageRecipesPage /></PrivateRoute>} />
         <Route path="/favorites" element={<PrivateRoute><FavoritesPage /></PrivateRoute>} />
+        <Route path="/categories" element={<CategoriesPage />} />
+        <Route path="/category/:category" element={<CategoryRecipesPage />} />
       </Routes>
       <Footer />
     </Router>

@@ -17,10 +17,12 @@ const FavoritesPage = () => {
         if (userDoc.exists()) {
           const userData = userDoc.data();
           const favoriteIds = userData.favorites || [];
-          const q = query(collection(db, 'recipes'), where('__name__', 'in', favoriteIds));
-          const querySnapshot = await getDocs(q);
-          const favoriteRecipes = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-          setFavorites(favoriteRecipes);
+          if (favoriteIds.length > 0) {
+            const q = query(collection(db, 'recipes'), where('__name__', 'in', favoriteIds.map(String)));
+            const querySnapshot = await getDocs(q);
+            const favoriteRecipes = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            setFavorites(favoriteRecipes);
+          }
         }
       };
       fetchFavorites();

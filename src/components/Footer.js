@@ -1,3 +1,19 @@
+/**
+ * The `Footer` function in JavaScript renders a footer component with quick links, social media icons,
+ * and contact information for a website.
+ * @returns The `Footer` component is being returned, which contains the footer section of a website.
+ * It includes quick links, social media icons for following, and contact information. The component is
+ * structured using Material-UI components like `Container`, `Grid`, `Typography`, and `IconButton`,
+ * along with links from `react-router-dom`.
+ */
+/**
+ * The `Footer` function in JavaScript renders a footer component with quick links, social media icons,
+ * and contact information.
+ * @returns The `Footer` component is being returned, which contains the footer section of a website.
+ * It includes quick links, social media icons for following, and contact information. The component is
+ * structured using Material-UI components like `Container`, `Grid`, `Typography`, and `IconButton`,
+ * along with links from `react-router-dom`.
+ */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Grid, Typography, IconButton } from '@mui/material';
