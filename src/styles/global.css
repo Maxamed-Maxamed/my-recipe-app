@@ -72,13 +72,13 @@ button:hover {
   gap: 10px;
 } */
 
-<<<<<<< HEAD
+
 /* In your global.css file */
 html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
-=======
+
 .footer {
   background-color: #f8f9fa;
   padding: 20px 0;
@@ -109,7 +109,6 @@ html, body, #root {
 
 .content {
   flex: 1;
->>>>>>> origin/master
 }
 
 body {
@@ -210,4 +209,5 @@ body {
 
 .text-primary {
   color: #3f51b5;
+}
 }

@@ -3,11 +3,11 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
 import { Button, TextField, Typography } from '@mui/material';
 
-const Signup = () => {
+const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignup = async () => {
+  const handleSignUp = async () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       alert('Signup successful');
@@ -18,12 +18,12 @@ const Signup = () => {
 
   return (
     <div>
-      <Typography variant="h4">Signup</Typography>
+      <Typography variant="h4">SignUp</Typography>
       <TextField label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
       <TextField label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <Button onClick={handleSignup}>Signup</Button>
+      <Button onClick={handleSignUp}>SignUp</Button>
     </div>
   );
 };
 
-export default Signup;
+export default SignUp;
