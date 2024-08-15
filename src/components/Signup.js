@@ -1,28 +1,54 @@
+// src/components/SignUp.js
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebaseConfig';
-import { Button, TextField, Typography } from '@mui/material';
+import { auth } from './firebase'; // Import the auth object from firebase.js
+import { Container, TextField, Button, Typography, Box } from '@mui/material';
+import '../styles/global.css'; // Ensure the styles are imported
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSignUp = async () => {
+  const handleSignUp = async (e) => {
+    e.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      alert('Signup successful');
+      alert('User created successfully!');
     } catch (error) {
-      alert('Error signing up: ' + error.message);
+      console.error(error);
+      alert('Error creating user');
     }
   };
 
   return (
-    <div>
-      <Typography variant="h4">SignUp</Typography>
-      <TextField label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <TextField label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <Button onClick={handleSignUp}>SignUp</Button>
-    </div>
+    <Container maxWidth="sm">
+      <Box mt={5}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Sign Up
+        </Typography>
+        <form onSubmit={handleSignUp}>
+          <TextField
+            label="Email"
+            type="email"
+            fullWidth
+            margin="normal"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField
+            label="Password"
+            type="password"
+            fullWidth
+            margin="normal"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button type="submit" variant="contained" color="primary" fullWidth>
+            Sign Up
+          </Button>
+        </form>
+      </Box>
+    </Container>
   );
 };
 
