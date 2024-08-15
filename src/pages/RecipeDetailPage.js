@@ -1,18 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Typography, List, ListItem, Paper } from '@mui/material';
 import { fetchRecipeDetails } from '../SpoonacularAPI';
-import '../styles/App.css'; // Ensure the styles are imported
+import { Container, Typography, Paper, List, ListItem } from '@mui/material';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../firebaseConfig';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import Review from '../components/Review';
+
+const db = getFirestore();
 
 function RecipeDetailPage() {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
+  const [user] = useAuthState(auth);
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     const getRecipeDetails = async () => {
       try {
         const data = await fetchRecipeDetails(id);
         setRecipe(data);
+
+        const recipeRef = doc(db, 'recipes', id);
+        const recipeDoc = await getDoc(recipeRef);
+        if (recipeDoc.exists()) {
+          const recipeData = recipeDoc.data();
+          setReviews(recipeData.reviews || []);
+        }
       } catch (error) {
         console.error('Error fetching recipe details:', error);
       }
@@ -20,6 +34,10 @@ function RecipeDetailPage() {
 
     getRecipeDetails();
   }, [id]);
+
+  const handleReviewSubmit = (newReview) => {
+    setReviews((prevReviews) => [...prevReviews, newReview]);
+  };
 
   if (!recipe) return <p>Loading...</p>;
 
@@ -49,6 +67,21 @@ function RecipeDetailPage() {
           {recipe.instructions.split('\n').map((instruction, index) => (
             <ListItem key={index}>
               <Typography variant="body1">{instruction}</Typography>
+            </ListItem>
+          ))}
+        </List>
+      </Paper>
+      <Review recipeId={id} onReviewSubmit={handleReviewSubmit} />
+      <Typography variant="h6" gutterBottom align="center">
+        Reviews
+      </Typography>
+      <Paper elevation={3} style={{ padding: '16px', marginBottom: '16px' }}>
+        <List>
+          {reviews.map((review, index) => (
+            <ListItem key={index}>
+              <Typography variant="body1">
+                {review.rating} stars - {review.comment}
+              </Typography>
             </ListItem>
           ))}
         </List>

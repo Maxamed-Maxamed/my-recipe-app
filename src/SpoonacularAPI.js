@@ -18,9 +18,13 @@ export const searchRecipes = async (query) => {
 };
 
 export const fetchRecipeDetails = async (id) => {
-  return fetchFromAPI(`/recipes/${id}/information?includeNutrition=false`);
+  return fetchFromAPI(`/recipes/${id}/information?includeNutrition=true`);
 };
 
 export const searchRecipesByIngredients = async (ingredients) => {
   return fetchFromAPI(`/recipes/findByIngredients?ingredients=${encodeURIComponent(ingredients)}`);
+};
+
+export const fetchRecipesByCategory = async (category) => {
+  return fetchFromAPI(`/recipes/complexSearch?type=${encodeURIComponent(category)}`);
 };
