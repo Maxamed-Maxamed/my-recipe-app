@@ -4,6 +4,7 @@ import { Container, Grid, Typography, IconButton } from '@mui/material';
 import { Facebook, Twitter, Instagram } from '@mui/icons-material';
 import '../styles/global.css';
 
+
 function Footer() {
   return (
     <footer className="footer">
@@ -20,13 +21,13 @@ function Footer() {
           <Grid item xs={12} sm={4}>
             <Typography variant="h6">Follow Us</Typography>
             <div className="social-icons">
-              <IconButton color="inherit" href="https://facebook.com">
+              <IconButton color="inherit" href="https://facebook.com" aria-label="Facebook">
                 <Facebook />
               </IconButton>
-              <IconButton color="inherit" href="https://twitter.com">
+              <IconButton color="inherit" href="https://twitter.com" aria-label="Twitter">
                 <Twitter />
               </IconButton>
-              <IconButton color="inherit" href="https://instagram.com">
+              <IconButton color="inherit" href="https://instagram.com" aria-label="Instagram">
                 <Instagram />
               </IconButton>
             </div>
