@@ -3,18 +3,24 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Pacifico', cursive; /* Apply Pacifico font */
+  
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Pacifico ', sans-serif; */
+  font-family: "Pacifico", cursive;
   background-color: #f5f5f5;
   margin: 0;
   padding: 0;
+  /* background: linear-gradient(to bottom, #000000 0%, #F42132, #FD9E4F, #38A83F 100%) */
 }
+
 
 a {
   text-decoration: none;
   color: inherit;
+  font-family: 'Pacifico', cursive; /* Apply Pacifico font */
 }
 
 button {
@@ -25,10 +31,12 @@ button {
   padding: 10px 20px;
   border-radius: 5px;
   transition: background-color 0.3s ease;
+  font-family: 'Pacifico', cursive; /* Apply Pacifico font */
 }
 
 button:hover {
   background-color: #ccc; /* Light gray background on hover */
+  font-family: 'Pacifico', cursive; /* Apply Pacifico font */
 }
 
 /* Utility classes */
@@ -36,10 +44,16 @@ button:hover {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  font-family: 'Pacifico', cursive; /* Apply Pacifico font */
 }
 
 .text-center {
   text-align: center;
+  font-family: "Pacifico", cursive;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Pacifico', cursive; /* Apply Pacifico font to headings */
 }
 
 /* Footer styles
@@ -78,6 +92,11 @@ html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: 'Pacifico', cursive; /* Apply Pacifico font */
+
+}
+
+
 
 .footer {
   background-color: #f8f9fa;
@@ -91,20 +110,24 @@ html, body, #root {
 .footer-links {
   list-style: none;
   padding: 0;
+  font-family: 'Pacifico', cursive; /* Apply Pacifico font */
 }
 
 .footer-links li {
   margin-bottom: 10px;
+  font-family: 'Pacifico', cursive; /* Apply Pacifico font */
 }
 
 .footer-links a {
   text-decoration: none;
   color: inherit;
+  font-family: 'Pacifico', cursive; /* Apply Pacifico font */
 }
 
 .social-icons {
   display: flex;
   gap: 10px;
+  font-family: 'Pacifico', cursive; /* Apply Pacifico font */
 }
 
 .content {
@@ -115,6 +138,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-family: 'Pacifico', cursive; /* Apply Pacifico font */
 }
 
 .app-container {
@@ -164,19 +188,23 @@ body {
 
 
 .hero-section {
-  background-image: url('../img/img-cakes.jpg');
+  background-image: url('../img/76110.jpg');
   background-size: cover;
   background-position: center;
   color: #a9cbe3;
   text-align: center;
   
   /* New or modified properties */
-  min-height: 80vh; /* Makes the section at least 80% of the viewport height */
-  padding: 150px 0; /* Increases top and bottom padding */
+  min-height: 15vh; /* Makes the section at least 80% of the viewport height */
+  padding: 1px 0; /* Increases top and bottom padding */
   display: flex;
   flex-direction: column;
   justify-content: center; /* Vertically centers the content */
 }
+
+
+
+
 .hero-title {
   margin-bottom: 20px;
 }
@@ -209,5 +237,7 @@ body {
 
 .text-primary {
   color: #3f51b5;
+  font-family: 'Pacifico', cursive; /* Apply Pacifico font */
 }
-}
+
+

@@ -45,7 +45,7 @@ function RecipeCard({ recipe, recipeId }) {
     <Card>
       <CardMedia
         component="img"
-        height="80"
+        height="100"
         image={recipeData.image}
         alt={recipeData.title}
       />

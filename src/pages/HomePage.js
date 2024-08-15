@@ -4,6 +4,7 @@ import RecipeCard from '../components/RecipeCard';
 import HeroSection from '../components/HeroSection';
 import SearchBar from '../components/SearchBar';
 import { Grid, Container, Typography, CircularProgress } from '@mui/material';
+import '../styles/global.css'; // Ensure the styles are imported
 
 function HomePage() {
   const [recipes, setRecipes] = useState([]);

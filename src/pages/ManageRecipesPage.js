@@ -4,6 +4,7 @@ import { auth, db } from '../firebaseConfig';
 import { collection, query, where, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { Container, Typography, Button, Grid, Card, CardContent, CardActions } from '@mui/material';
 import RecipeForm from '../components/RecipeForm';
+import '../styles/global.css'; // Ensure the styles are imported
 
 const ManageRecipesPage = () => {
   const [user] = useAuthState(auth);

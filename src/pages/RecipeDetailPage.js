@@ -6,6 +6,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebaseConfig';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import Review from '../components/Review';
+import '../styles/global.css'; // Ensure the styles are imported
 
 const db = getFirestore();
 
@@ -64,6 +65,12 @@ function RecipeDetailPage() {
       </Typography>
       <Paper elevation={3} style={{ padding: '16px', marginBottom: '16px' }}>
         <List>
+          {/* {recipe.instructions.split('\n').map((instruction, index) => (
+            <ListItem key={index}>
+              <Typography variant="body1">{instruction}</Typography>
+            </ListItem>
+          ))} */}
+
           {recipe.instructions.split('\n').map((instruction, index) => (
             <ListItem key={index}>
               <Typography variant="body1">{instruction}</Typography>

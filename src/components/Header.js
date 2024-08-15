@@ -24,10 +24,10 @@ function Header() {
 
   return (
 
-    <AppBar position="static" style={{ backgroundColor: '#000000' }}>
+    <AppBar position="static" style={{ backgroundColor: '#38A83F' }}>
 
       <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Typography variant="h6" style={{ flexGrow: 1, color: '#ffff' }}>
+        <Typography variant="h6" style={{ flexGrow: 1, color: '#ffff' , fontFamily: 'Arial, sans-serif', background: '#38A83F'}}>
 
           The Chronicles of Carlson
         </Typography>

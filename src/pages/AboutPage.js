@@ -1,39 +1,104 @@
 import React from 'react';
-import '../styles/global.css'; // Import global styles
-import { Typography, Container, Grid, Paper, Box } from '@mui/material';
-import { Utensils, Heart, Users } from 'lucide-react';
+import { Container, Typography, Box, Grid, Avatar, Card, CardContent, CardMedia } from '@mui/material';
+import { deepOrange } from '@mui/material/colors';
 
-const AboutPage = () => {
-  const features = [
-    { icon: <Utensils size={48} />, title: 'Diverse Recipes', description: 'Explore a wide variety of recipes from different cuisines.' },
-    { icon: <Heart size={48} />, title: 'Save Favorites', description: 'Keep track of your favorite recipes for quick access.' },
-    { icon: <Users size={48} />, title: 'Community', description: 'Share your own recipes and connect with other food enthusiasts.' },
-  ];
-
+const About = () => {
   return (
-    <Container maxWidth="md" className="py-8">
-      <Box my={4}>
-        <Typography variant="h4" className="text-center mb-6">About Our Recipe App</Typography>
-        <Typography variant="body1" className="text-center mb-8">
-          Welcome to our Recipe App! We're passionate about bringing delicious recipes to your kitchen.
+    <Container maxWidth="lg">
+      {/* Header Section */}
+      <Box mt={5} mb={5} textAlign="center">
+        <Typography variant="h3" component="h1" gutterBottom>
+          About Us
+        </Typography>
+        <Typography variant="h6" component="p">
+          Welcome to our cooking website! Discover delicious recipes and cooking tips.
         </Typography>
       </Box>
-      
-      <Grid container spacing={4}>
-        {features.map((feature, index) => (
-          <Grid item xs={12} sm={4} key={index}>
-            <Paper className="p-4 text-center h-full">
-              <Box mb={2} color="primary.main">
-                {feature.icon}
-              </Box>
-              <Typography variant="h6" className="mb-2">{feature.title}</Typography>
-              <Typography variant="body2">{feature.description}</Typography>
-            </Paper>
+
+      {/* Avatar Section */}
+      <Box display="flex" justifyContent="center" alignItems="center" mb={5}>
+        <Avatar
+          alt="Chef"
+          src="/static/images/avatar/chef.jpg" // Replace with your image path
+          sx={{ width: 100, height: 100, bgcolor: deepOrange[500] }}
+        />
+        <Box ml={3}>
+          <Typography variant="h5" component="h2">
+            Our Mission
+          </Typography>
+          <Typography variant="body1" component="p">
+            Our goal is to inspire and empower home cooks to create delicious meals with ease.
+          </Typography>
+        </Box>
+      </Box>
+
+      {/* Recipes Section */}
+      <Box mb={5}>
+        <Typography variant="h4" component="h2" gutterBottom>
+          Featured Recipes
+        </Typography>
+        <Grid container spacing={4}>
+          {/* Recipe Card 1 */}
+          <Grid item xs={12} sm={6} md={4}>
+            <Card>
+              <CardMedia
+                component="img"
+                height="140"
+                image="/static/images/recipes/recipe1.jpg" // Replace with your image path
+                alt="Recipe 1"
+              />
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  Recipe 1
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  A brief description of Recipe 1.
+                </Typography>
+              </CardContent>
+            </Card>
           </Grid>
-        ))}
-      </Grid>
+          {/* Recipe Card 2 */}
+          <Grid item xs={12} sm={6} md={4}>
+            <Card>
+              <CardMedia
+                component="img"
+                height="140"
+                image="/static/images/recipes/recipe2.jpg" // Replace with your image path
+                alt="Recipe 2"
+              />
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  Recipe 2
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  A brief description of Recipe 2.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          {/* Recipe Card 3 */}
+          <Grid item xs={12} sm={6} md={4}>
+            <Card>
+              <CardMedia
+                component="img"
+                height="140"
+                image="/static/images/recipes/recipe3.jpg" // Replace with your image path
+                alt="Recipe 3"
+              />
+              <CardContent>
+                <Typography variant="h5" component="div">
+                  Recipe 3
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  A brief description of Recipe 3.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
+      </Box>
     </Container>
   );
 };
 
-export default AboutPage;
+export default About;
