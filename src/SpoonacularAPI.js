@@ -25,6 +25,6 @@ export const searchRecipesByIngredients = async (ingredients) => {
   return fetchFromAPI(`/recipes/findByIngredients?ingredients=${encodeURIComponent(ingredients)}`);
 };
 
-export const fetchRecipesByCategory = async (category) => {
-  return fetchFromAPI(`/recipes/complexSearch?type=${encodeURIComponent(category)}`);
+export const fetchRecipesByCategory = async (category, page = 1, number = 10) => {
+  return fetchFromAPI(`/recipes/complexSearch?type=${encodeURIComponent(category)}&offset=${(page - 1) * number}&number=${number}`);
 };
