@@ -4,18 +4,14 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Pacifico', cursive; /* Apply Pacifico font */
-  
 }
 
 body {
-  /* font-family: 'Pacifico ', sans-serif; */
   font-family: "Pacifico", cursive;
   background-color: #f5f5f5;
   margin: 0;
   padding: 0;
-  /* background: linear-gradient(to bottom, #000000 0%, #F42132, #FD9E4F, #38A83F 100%) */
 }
-
 
 a {
   text-decoration: none;
@@ -56,89 +52,13 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Pacifico', cursive; /* Apply Pacifico font to headings */
 }
 
-/* Footer styles
-.footer {
-  background-color: #333;
-  color: #fff;
-  padding: 20px 0;
-}
-
-.footer-links {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-links li {
-  margin-bottom: 10px;
-}
-
-.footer-links a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.footer-links a:hover {
-  text-decoration: underline;
-}
-
-.social-icons {
-  display: flex;
-  gap: 10px;
-} */
-
-
 /* In your global.css file */
 html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Pacifico', cursive; /* Apply Pacifico font */
-
-}
-
-
-
-.footer {
-  background-color: #f8f9fa;
-  padding: 20px 0;
-  margin-top: 20px;
-  position: relative;
-  width: 100%;
-  bottom: 0;
-}
-
-.footer-links {
-  list-style: none;
-  padding: 0;
-  font-family: 'Pacifico', cursive; /* Apply Pacifico font */
-}
-
-.footer-links li {
-  margin-bottom: 10px;
-  font-family: 'Pacifico', cursive; /* Apply Pacifico font */
-}
-
-.footer-links a {
-  text-decoration: none;
-  color: inherit;
-  font-family: 'Pacifico', cursive; /* Apply Pacifico font */
-}
-
-.social-icons {
-  display: flex;
-  gap: 10px;
-  font-family: 'Pacifico', cursive; /* Apply Pacifico font */
-}
-
-.content {
-  flex: 1;
-}
-
-body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  font-family: 'Pacifico', cursive; /* Apply Pacifico font */
 }
 
 .app-container {
@@ -148,14 +68,14 @@ body {
 }
 
 .content {
-  flex: 1 0 auto;
+  flex: 1;
 }
 
 .footer {
-  flex-shrink: 0;
   background-color: #333;
   color: #fff;
   padding: 20px 0;
+  flex-shrink: 0;
 }
 
 .footer-links {
@@ -178,14 +98,8 @@ body {
 
 .social-icons {
   display: flex;
-  justify-content: flex-start;
   gap: 10px;
 }
-
-
-
-
-
 
 .hero-section {
   background-image: url('../img/logo.jpg');
@@ -193,17 +107,12 @@ body {
   background-position: center;
   color: #a9cbe3;
   text-align: center;
-  
-  /* New or modified properties */
   min-height: 15vh; /* Makes the section at least 80% of the viewport height */
   padding: 1px 0; /* Increases top and bottom padding */
   display: flex;
   flex-direction: column;
   justify-content: center; /* Vertically centers the content */
 }
-
-
-
 
 .hero-title {
   margin-bottom: 20px;
@@ -239,5 +148,3 @@ body {
   color: #3f51b5;
   font-family: 'Pacifico', cursive; /* Apply Pacifico font */
 }
-
-
