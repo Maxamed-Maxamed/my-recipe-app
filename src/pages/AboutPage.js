@@ -17,11 +17,12 @@ const About = () => {
 
       {/* Avatar Section */}
       <Box display="flex" justifyContent="center" alignItems="center" mb={5}>
-        <Avatar
-          alt="Chef"
-          src="/static/images/avatar/chef.jpg" // Replace with your image path
-          sx={{ width: 100, height: 100, bgcolor: deepOrange[500] }}
-        />
+  <Avatar
+    alt="Our Logo"
+    src={require('../img/logo-in.jpg')} // Ensure the path is correct
+    sx={{ width: 100, height: 100, bgcolor: deepOrange[500] }}
+  />
+
         <Box ml={3}>
           <Typography variant="h5" component="h2">
             Our Mission
