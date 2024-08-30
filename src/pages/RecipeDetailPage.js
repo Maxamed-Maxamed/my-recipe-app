@@ -249,6 +249,53 @@ function RecipeDetailPage() {
   if (!recipe) return <p>Loading...</p>;
 
   return (
+    // <Container>
+    //   <Typography variant="h4" gutterBottom align="center">
+    //     {recipe.title}
+    //   </Typography>
+    //   <img src={recipe.image} alt={recipe.title} className="recipe-image" />
+    //   {/* <Rating value={recipe.averageRating} readOnly /> Display average rating */}
+    //   <Typography variant="h6" gutterBottom align="center">
+    //     Ingredients
+    //   </Typography>
+    //   <Paper elevation={3} style={{ padding: '16px', marginBottom: '16px' }}>
+    //     <List>
+    //       {recipe.extendedIngredients.map((ingredient) => (
+    //         <ListItem key={ingredient.id}>
+    //           <Typography variant="body1">{ingredient.original}</Typography>
+    //         </ListItem>
+    //       ))}
+    //     </List>
+    //   </Paper>
+    //   <Typography variant="h6" gutterBottom align="center">
+    //     Instructions
+    //   </Typography>
+    //   <Paper elevation={3} style={{ padding: '16px', marginBottom: '16px' }}>
+    //     <List>
+    //       {recipe.instructions.split('\n').map((instruction, index) => (
+    //         <ListItem key={index}>
+    //           <Typography variant="body1">{instruction}</Typography>
+    //         </ListItem>
+    //       ))}
+    //     </List>
+    //   </Paper>
+    //   <Review recipeId={id} onReviewSubmit={handleReviewSubmit} />
+    //   <Typography variant="h6" gutterBottom align="center">
+    //     Reviews
+    //   </Typography>
+    //   <Paper elevation={3} style={{ padding: '16px', marginBottom: '16px' }}>
+    //     <List>
+    //       {reviews.map((review, index) => (
+    //         <ListItem key={index}>
+    //           <Typography variant="body1">
+    //             <Rating value={review.rating} readOnly /> {/* Display individual rating */}
+    //             {review.rating} stars - {review.comment}
+    //           </Typography>
+    //         </ListItem>
+    //       ))}
+    //     </List>
+    //   </Paper>
+    // </Container>
     <Container>
       <Typography variant="h4" gutterBottom align="center">
         {recipe.title}
@@ -258,7 +305,7 @@ function RecipeDetailPage() {
       <Typography variant="h6" gutterBottom align="center">
         Ingredients
       </Typography>
-      <Paper elevation={3} style={{ padding: '16px', marginBottom: '16px' }}>
+      <Paper elevation={3} style={{ padding: '19px', marginBottom: '19px' }}>
         <List>
           {recipe.extendedIngredients.map((ingredient) => (
             <ListItem key={ingredient.id}>
@@ -271,13 +318,7 @@ function RecipeDetailPage() {
         Instructions
       </Typography>
       <Paper elevation={3} style={{ padding: '16px', marginBottom: '16px' }}>
-        <List>
-          {recipe.instructions.split('\n').map((instruction, index) => (
-            <ListItem key={index}>
-              <Typography variant="body1">{instruction}</Typography>
-            </ListItem>
-          ))}
-        </List>
+        <Typography variant="body1" component="div" dangerouslySetInnerHTML={{ __html: recipe.instructions.replace(/\n/g, '<br/>') }} />
       </Paper>
       <Review recipeId={id} onReviewSubmit={handleReviewSubmit} />
       <Typography variant="h6" gutterBottom align="center">
